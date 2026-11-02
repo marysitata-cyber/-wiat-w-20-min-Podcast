@@ -1,0 +1,33 @@
+
+name: Test glosu podcastu
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Pobierz pliki
+        uses: actions/checkout@v4
+
+      - name: Przygotuj Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Zainstaluj OpenAI
+        run: pip install openai
+
+      - name: Wygeneruj glos
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python generate_voice.py
+
+      - name: Zapisz nagranie
+        uses: actions/upload-artifact@v4
+        with:
+          name: probka-glosu
+          path: probka_glosu.mp3
+  
