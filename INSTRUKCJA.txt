@@ -1,0 +1,8 @@
+1. Utwórz publiczne repozytorium GitHub o nazwie swiat-w-20-minut.
+2. Rozpakuj archiwum. Na GitHub w repozytorium wybierz Add file > Upload files i prześlij index.html, cover.png, feed.xml oraz plik MP3 (bez folderu nadrzędnego). Zatwierdź Commit changes.
+3. Otwórz feed.xml w repozytorium, kliknij ikonę ołówka Edit, zastąp WSZYSTKIE wystąpienia TWOJ_LOGIN swoją nazwą użytkownika GitHub (najlepiej Ctrl+H na komputerze), zapisz Commit changes.
+4. Settings > Pages > Build and deployment > Deploy from a branch > main > /(root) > Save.
+5. Otwórz https://TWOJ_LOGIN.github.io/swiat-w-20-minut/feed.xml po zamianie TWOJ_LOGIN.
+6. Na iPhonie Apple Podcasts > Biblioteka > ... > Obserwuj program przez URL > wklej adres RSS.
+UWAGA: GitHub Pages jest PUBLICZNY; nie służy do przechowywania poufnych materiałów.
+Na darmowym koncie repozytorium również musi być publiczne. Generowanie i automatyczna publikacja nowych odcinków wymagają odrębnej konfiguracji.
