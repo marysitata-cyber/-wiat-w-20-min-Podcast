@@ -18,7 +18,7 @@ jobs:
           python-version: '3.11'
 
       - name: Zainstaluj OpenAI
-        run: pip install openai
+        run: run: pip install edge-tts
 
       - name: Wygeneruj glos
         env:
