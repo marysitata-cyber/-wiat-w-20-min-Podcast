@@ -6,30 +6,57 @@ from openai import OpenAI
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
 text = """
-Dzień dobry. Jest wtorek, trzeci listopada.
-Witamy w podcaście Świat w 20 minut.
+Dzień dobry!
 
-Dziś przyjrzymy się wydarzeniom, które
-mają największe znaczenie dla światowej
-polityki, gospodarki i biznesu.
+Jest wtorek, trzeci listopada.
+Witam w podcaście Świat w dwadzieścia minut.
 
-Nie tylko przedstawimy fakty,
-ale również wyjaśnimy ich konsekwencje.
-Zaczynamy.
+Dziś przyjrzymy się wydarzeniom, które mają
+największe znaczenie dla światowej polityki,
+gospodarki i biznesu.
+
+Ale nie poprzestaniemy na samych faktach.
+
+Wyjaśnimy, dlaczego te wydarzenia są ważne,
+co oznaczają dla gospodarki
+i jakie mogą mieć konsekwencje w przyszłości.
+
+Zaczynamy!
+"""
+
+instructions = """
+You are an experienced Polish radio news journalist.
+
+Speak entirely in fluent, natural Polish, with a
+warm, confident and engaging male voice.
+
+Sound like a real human journalist delivering
+a premium daily news briefing.
+
+Use natural conversational rhythm.
+Vary pitch, emphasis and sentence melody.
+Avoid repetitive intonation and mechanical rhythm.
+
+Deliver important facts clearly and confidently.
+Create subtle anticipation before key information.
+Use natural, brief pauses between thoughts.
+
+Maintain a moderately brisk, engaging pace.
+Slow down slightly when explaining complex ideas.
+
+Sound intelligent, credible and conversational,
+not theatrical, overly excited or robotic.
+
+Pronounce Polish words clearly and naturally.
 """
 
 with client.audio.speech.with_streaming_response.create(
     model="gpt-4o-mini-tts",
     voice="cedar",
     input=text,
-    instructions=(
-        "Speak in natural, fluent Polish. "
-        "Use a confident, energetic male news-presenter style. "
-        "Vary intonation naturally, emphasize important facts, "
-        "and use short pauses between topics. "
-        "Sound like a professional radio journalist, "
-        "not a robotic narrator. Avoid exaggeration."
-    ),
+    instructions=instructions,
+    speed=1.0,
+    response_format="mp3",
 ) as response:
     response.stream_to_file(Path("probka_glosu.mp3"))
 
